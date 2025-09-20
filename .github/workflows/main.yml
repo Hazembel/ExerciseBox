@@ -1,14 +1,44 @@
-            - name: Setup React
-  # You may pin to the exact commit or the version.
-  # uses: kirkeaton/setup-react@9e28853f52cc70c0835e44fd2e934a892b0d8c61
-  uses: kirkeaton/setup-react@v1.0.0
-  with:
-    # The React version to install.
-    react-version: 
-    # The React DOM version to install.
-    react-dom-version: 
-    # The React types version to install.
-    react-types-version: # optional
-    # The React DOM types version to install.
-    react-dom-types-version: # optional
-          
+# A correct workflow for a project with a build step (like Vite or Create React App)
+name: Deploy React App to GitHub Pages
+
+on:
+  push:
+    branches: ["main"] # Run this workflow when you push to the main branch
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Use a recent version of Node.js
+      - name: Install dependencies
+        run: npm install # Installs React and other tools
+      - name: Build the app
+        run: npm run build # This is the "bake the cake" step! It creates a `dist` or `build` folder.
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist' # Point to the folder created by the "npm run build" step
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
