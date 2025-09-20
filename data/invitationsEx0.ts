@@ -1,0 +1,147 @@
+export const invitationsEx0Data = [
+  {
+    id: 1001,
+    sentence: 'What is "Geburtstag"?',
+    options: ['Birthday', 'Wedding', 'Party', 'Festival'],
+    correctAnswer: ['Birthday'],
+    explanation: 'Correct! "Der Geburtstag" means birthday. A birthday party is "die Geburtstagsfeier".',
+  },
+  {
+    id: 1002,
+    sentence: 'What is "Hochzeit"?',
+    options: ['Christmas Party', 'Wedding', 'Barbecue', 'New Year\'s Eve'],
+    correctAnswer: ['Wedding'],
+    explanation: 'Correct! "Die Hochzeit" is the German word for wedding.',
+  },
+  {
+    id: 1003,
+    sentence: 'A "Weihnachtsfeier" is a ___ .',
+    options: ['Christmas party', 'New Year\'s party', 'Children\'s party', 'Barbecue'],
+    correctAnswer: ['Christmas party'],
+    explanation: '"Weihnachten" means Christmas and "die Feier" means celebration. So, "die Weihnachtsfeier" is a Christmas party.',
+  },
+  {
+    id: 1004,
+    sentence: 'What is a "Grillparty"?',
+    options: ['Barbecue', 'Birthday', 'Wedding', 'Festival'],
+    correctAnswer: ['Barbecue'],
+    explanation: 'Correct! "grillen" means to grill/barbecue, so "die Grillparty" is a barbecue party.',
+  },
+  {
+    id: 1005,
+    sentence: 'A "Silvesterparty" celebrates ___ .',
+    options: ['New Year\'s Eve', 'Christmas', 'Easter', 'A wedding'],
+    correctAnswer: ['New Year\'s Eve'],
+    explanation: '"Silvester" is the German name for New Year\'s Eve.',
+  },
+  {
+    id: 1006,
+    sentence: 'Am Samstag habe ich eine ___ .',
+    options: ['Geburtstagsfeier', 'Hochzeit', 'Silvester', 'Weihnachten'],
+    correctAnswer: ['Geburtstagsfeier'],
+    explanation: '"Geburtstagsfeier" (birthday party) fits best as a common Saturday event.',
+    translation: 'On Saturday I have a birthday party.'
+  },
+  {
+    id: 1007,
+    sentence: 'The word for "festival" or "celebration" is ___ .',
+    options: ['das Fest', 'die Party', 'die Feier', 'die Hochzeit'],
+    correctAnswer: ['das Fest'],
+    explanation: 'Correct! "Das Fest" is a general term for a festival or larger celebration.',
+  },
+  {
+    id: 1008,
+    sentence: 'Wir gehen zu einer ___ im Park.',
+    options: ['Grillparty', 'Hochzeit', 'Weihnachtsfeier', 'Silvesterparty'],
+    correctAnswer: ['Grillparty'],
+    explanation: 'A "Grillparty" (barbecue) is the type of party most likely to happen in a park.',
+    translation: 'We are going to a barbecue in the park.'
+  },
+  {
+    id: 1009,
+    sentence: 'My sister is getting married. We are planning the ___ .',
+    options: ['Hochzeit', 'Geburtstag', 'Party', 'Fest'],
+    correctAnswer: ['Hochzeit'],
+    explanation: 'If your sister is getting married, you are planning the "Hochzeit" (wedding).',
+  },
+  {
+    id: 1010,
+    sentence: 'What is a "Kinderparty"?',
+    options: ['Children\'s party', 'Kindness party', 'Christmas party', 'Garden party'],
+    correctAnswer: ['Children\'s party'],
+    explanation: '"Die Kinder" means "the children", so "die Kinderparty" is a children\'s party.',
+  },
+  {
+    id: 1011,
+    sentence: 'The general word for "party" in German is ___ .',
+    options: ['die Party', 'das Fest', 'die Feier', 'die Hochzeit'],
+    correctAnswer: ['die Party'],
+    explanation: 'Correct! The word "Party" is borrowed from English and is very common.',
+  },
+  {
+    id: 1012,
+    sentence: 'Im Dezember haben viele Firmen eine ___ .',
+    options: ['Weihnachtsfeier', 'Grillparty', 'Hochzeit', 'Geburtstagsfeier'],
+    correctAnswer: ['Weihnachtsfeier'],
+    explanation: 'In December, many companies have a "Weihnachtsfeier" (Christmas party).',
+    translation: 'In December, many companies have a Christmas party.'
+  },
+  {
+    id: 1013,
+    sentence: 'What do you celebrate on December 31st?',
+    options: ['Silvester', 'Weihnachten', 'Ostern', 'Geburtstag'],
+    correctAnswer: ['Silvester'],
+    explanation: 'Correct! December 31st is "Silvester" in German.',
+  },
+  {
+    id: 1014,
+    sentence: 'A "Feier" is a ___ .',
+    options: ['Celebration', 'Festival', 'Wedding', 'Party'],
+    correctAnswer: ['Celebration'],
+    explanation: '"Die Feier" is a general word for a celebration or party.',
+  },
+  {
+    id: 1015,
+    sentence: 'Thomas macht eine Party zu seinem 30. ___ .',
+    options: ['Geburtstag', 'Hochzeit', 'Fest', 'Silvester'],
+    correctAnswer: ['Geburtstag'],
+    explanation: 'A 30th is a milestone birthday ("Geburtstag").',
+    translation: 'Thomas is having a party for his 30th birthday.'
+  },
+  {
+    id: 1016,
+    sentence: 'What does "einladen" mean?',
+    options: ['To invite', 'To eat', 'To celebrate', 'To go'],
+    correctAnswer: ['To invite'],
+    explanation: 'Correct! "einladen" is the verb for "to invite".',
+  },
+  {
+    id: 1017,
+    sentence: 'What is a "Hochzeitsfeier"?',
+    options: ['Wedding reception/party', 'High-time party', 'Birthday party', 'Holiday party'],
+    correctAnswer: ['Wedding reception/party'],
+    explanation: 'This combines "Hochzeit" (wedding) and "Feier" (celebration/party).',
+  },
+  {
+    id: 1018,
+    sentence: 'What is a "Gartenparty"?',
+    options: ['Garden party', 'Garage party', 'Grill party', 'Good party'],
+    correctAnswer: ['Garden party'],
+    explanation: '"Der Garten" means "the garden".',
+  },
+  {
+    id: 1019,
+    sentence: 'Let\'s have a party! Lass uns eine ___ machen!',
+    options: ['Party', 'Hochzeit', 'Fest', 'Geburtstag'],
+    correctAnswer: ['Party'],
+    explanation: '"Eine Party machen" is a common phrase for "to have a party".',
+  },
+  {
+    id: 1020,
+    sentence: 'Am 31. Dezember gehen wir zu einer ___ .',
+    options: ['Silvesterparty', 'Weihnachtsfeier', 'Geburtstagsfeier', 'Hochzeit'],
+    correctAnswer: ['Silvesterparty'],
+    explanation: 'December 31st is Silvester, so you would go to a "Silvesterparty".',
+    translation: 'On December 31st, we are going to a New Year\'s Eve party.'
+  }
+];
