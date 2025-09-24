@@ -184,6 +184,15 @@ header h1 {
   color: #27ae60;
 }
 
+.rule-box.decline {
+    border-color: var(--incorrect-color);
+}
+
+.rule-box.decline h3 {
+    color: #c0392b;
+}
+
+
 .article-table, .modal-table, .numbers-table, .pronoun-table {
     width: 100%;
     border-collapse: collapse;
@@ -256,6 +265,21 @@ header h1 {
   font-weight: bold;
 }
 
+.verb-case-columns {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.verb-case-columns ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.verb-case-columns ul li {
+    margin-bottom: 0.25rem;
+}
 
 .score-summary {
   background-color: var(--primary-color);

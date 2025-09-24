@@ -1,170 +1,109 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { exercise0Data } from './data/exercise0';
-import { exercise1Data } from './data/exercise1';
-import { exercise2Data } from './data/exercise2';
-import { exercise3Data } from './data/exercise3';
-import { exercise4Data } from './data/exercise4';
-import { exercise5Data } from './data/exercise5';
-import { exercise6Data } from './data/exercise6';
-import { modalExercise0Data } from './data/modalExercise0';
-import { modalExercise1Data } from './data/modalExercise1';
-import { modalExercise2Data } from './data/modalExercise2';
-import { modalExercise3Data } from './data/modalExercise3';
-import { modalExercise4Data } from './data/modalExercise4';
-import { modalExercise5Data } from './data/modalExercise5';
-import { interactiveOrdinalData } from './data/interactiveOrdinalData';
-import { numbersExercise0Data } from './data/numbersExercise0';
-import { numbersExercise1Data } from './data/numbersExercise1';
-import { numbersExercise2Data } from './data/numbersExercise2';
-import { numbersExercise3Data } from './data/numbersExercise3';
-import { personalPronounsEx0Data } from './data/personalPronounsEx0';
-import { personalPronounsEx1Data } from './data/personalPronounsEx1';
-import { personalPronounsEx2Data } from './data/personalPronounsEx2';
-import { personalPronounsEx3Data } from './data/personalPronounsEx3';
-import { personalPronounsEx4Data } from './data/personalPronounsEx4';
-import { invitationsEx0Data } from './data/invitationsEx0';
-import { invitationsEx1Data } from './data/invitationsEx1';
-import { invitationsEx2Data } from './data/invitationsEx2';
-import { invitationsEx3Data } from './data/invitationsEx3';
-import { prepositionsEx0Data } from './data/prepositionsEx0';
-import { prepositionsEx1Data } from './data/prepositionsEx1';
-import { prepositionsEx2Data } from './data/prepositionsEx2';
-import { prepositionsEx3Data } from './data/prepositionsEx3';
-
-
-const chapters = {
-  nomAkk: {
-    title: 'Nominativ vs Akkusativ',
-    quizzes: {
-      ex0: { title: 'Exercise 0: The Basics', data: exercise0Data },
-      ex1: { title: 'Exercise 1: Masculine Nouns', data: exercise1Data },
-      ex2: { title: 'Exercise 2: All Genders', data: exercise2Data },
-      ex3: { title: 'Exercise 3: Feminine Nouns', data: exercise3Data },
-      ex4: { title: 'Exercise 4: All Genders (Medium)', data: exercise4Data },
-      ex5: { title: 'Exercise 5: Plurals & "kein" (Hard)', data: exercise5Data },
-      ex6: { title: 'Exercise 6: Complex Sentences (Very Hard)', data: exercise6Data },
-    }
-  },
-  modal: {
-    title: 'Modal Verbs',
-    quizzes: {
-      modalEx0: { title: 'Exercise 0: The Basics', data: modalExercise0Data },
-      modalEx1: { title: 'Exercise 1: können & müssen', data: modalExercise1Data },
-      modalEx2: { title: 'Exercise 2: dürfen & wollen', data: modalExercise2Data },
-      modalEx3: { title: 'Exercise 3: sollen, mögen & möchten', data: modalExercise3Data },
-      modalEx4: { title: 'Exercise 4: All Verbs (Mixed)', data: modalExercise4Data },
-      modalEx5: { title: 'Exercise 5: Complex Sentences (Hard)', data: modalExercise5Data },
-    }
-  },
-  numbers: {
-    title: 'Numbers & Dates',
-    quizzes: {
-      numEx0: { title: 'Exercise 0: Ordinal Numbers (Interactive)', data: interactiveOrdinalData, type: 'interactive_ordinal' },
-      numEx1: { title: 'Exercise 1: Cardinal Numbers (1-100)', data: numbersExercise0Data },
-      numEx2: { title: 'Exercise 2: Ordinal Numbers & Dates', data: numbersExercise1Data },
-      numEx3: { title: 'Exercise 3: Mixed Ordinals & Dates', data: numbersExercise2Data },
-      numEx4: { title: 'Exercise 4: Advanced Dates', data: numbersExercise3Data },
-    }
-  },
-  pronouns: {
-    title: 'Personal Pronouns',
-    quizzes: {
-        proEx0: { title: 'Exercise 0: Basics (Nom. & Akk.)', data: personalPronounsEx0Data },
-        proEx1: { title: 'Exercise 1: Mixed Akkusativ', data: personalPronounsEx1Data },
-        proEx2: { title: 'Exercise 2: Dative Pronouns', data: personalPronounsEx2Data },
-        proEx3: { title: 'Exercise 3: Wer vs. Wen (Basics)', data: personalPronounsEx3Data },
-        proEx4: { title: 'Exercise 4: Wer vs. Wen (Mixed)', data: personalPronounsEx4Data },
-    }
-  },
-  invitations: {
-    title: 'Einladen (Invitations)',
-    quizzes: {
-      invEx0: { title: 'Exercise 0: Party Vocabulary', data: invitationsEx0Data },
-      invEx1: { title: 'Exercise 1: How to Invite', data: invitationsEx1Data },
-      invEx2: { title: 'Exercise 2: Actions and Verbs During Parties', data: invitationsEx2Data },
-      invEx3: { title: 'Exercise 3: Complete the Invitations', data: invitationsEx3Data },
-    }
-  },
-  prepositions: {
-    title: 'Prepositions (Präpositionen)',
-    quizzes: {
-      prepEx0: { title: 'Exercise 0: Basics & Meanings', data: prepositionsEx0Data },
-      prepEx1: { title: 'Exercise 1: Prepositions & Cases', data: prepositionsEx1Data },
-      prepEx2: { title: 'Exercise 2: Akkusativ-Only Prepositions', data: prepositionsEx2Data },
-      prepEx3: { title: 'Exercise 3: Akkusativ Prepositions (Applied)', data: prepositionsEx3Data },
-    }
-  }
-};
+import { chapters } from './chapters.js';
 
 
 const IntroContent = () => (
     <div className="intro-content">
-        <h2 className="intro-header">Nominativ & Akkusativ: The Basics</h2>
-        <div className="rule-box">
-            <h3>When to use Nominativ (Subject)</h3>
-            <p>The <strong>Nominativ</strong> case is for the <strong>subject</strong> of the sentence. The subject is the person or thing doing the action. Ask <strong>Wer?</strong> (Who?) or <strong>Was?</strong> (What?) to find it.</p>
-            <ul>
-                <li><em>“<strong>Der Mann</strong> schläft.”</em> &rarr; <strong>Wer</strong> schläft? &rarr; Der Mann.</li>
-                <li><em>“<strong>Ein Hund</strong> spielt.”</em> &rarr; <strong>Was</strong> spielt? &rarr; Ein Hund.</li>
-            </ul>
-        </div>
-        <div className="rule-box">
-            <h3>When to use Akkusativ (Direct Object)</h3>
-            <p>The <strong>Akkusativ</strong> case is for the <strong>direct object</strong>. The direct object is the person or thing that receives the action. Ask <strong>Wen?</strong> (Whom?) or <strong>Was?</strong> (What?) to find it.</p>
-            <ul>
-                <li><em>“Ich sehe <strong>den Mann</strong>.”</em> &rarr; <strong>Wen</strong> sehe ich? &rarr; den Mann.</li>
-                <li><em>“Er kauft <strong>einen Hund</strong>.”</em> &rarr; <strong>Was</strong> kauft er? &rarr; einen Hund.</li>
-            </ul>
-        </div>
+        <h2 className="intro-header">Nominativ, Akkusativ & Dativ: The Core Cases</h2>
         
-        <h3>Articles Overview (Nominativ &rarr; Akkusativ)</h3>
+        <div className="rule-box">
+            <h3>The 3 Main Cases: Who is doing what to whom?</h3>
+            <p>German cases change nouns, pronouns, and articles based on their job in a sentence.</p>
+            <ul>
+                <li><strong>Nominativ (Subject):</strong> The doer of the action. Ask: <strong>Wer/Was?</strong> (Who/What?)</li>
+                <li><strong>Akkusativ (Direct Object):</strong> The thing directly receiving the action. Ask: <strong>Wen/Was?</strong> (Whom/What?)</li>
+                <li><strong>Dativ (Indirect Object):</strong> The person/thing indirectly affected, often the recipient. Ask: <strong>Wem?</strong> (To whom?)</li>
+            </ul>
+        </div>
+
+        <h3>Article Changes</h3>
         <table className="article-table">
             <thead>
                 <tr>
                     <th>Gender</th>
-                    <th>Nominativ</th>
-                    <th>Akkusativ</th>
-                    <th>Change?</th>
+                    <th>Nominativ (Subject)</th>
+                    <th>Akkusativ (Direct Object)</th>
+                    <th>Dativ (Indirect Object)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr className="masculine-row">
                     <td>Maskulin (m.)</td>
-                    <td><strong>der / ein / kein</strong></td>
-                    <td><strong>den / einen / keinen</strong></td>
-                    <td className="change-highlight">Yes!</td>
+                    <td><strong>der / ein</strong></td>
+                    <td className="change-highlight"><strong>den / einen</strong></td>
+                    <td className="change-highlight"><strong>dem / einem</strong></td>
                 </tr>
                 <tr>
                     <td>Feminin (f.)</td>
-                    <td>die / eine / keine</td>
-                    <td>die / eine / keine</td>
-                    <td>No</td>
+                    <td>die / eine</td>
+                    <td>die / eine</td>
+                    <td className="change-highlight"><strong>der / einer</strong></td>
                 </tr>
                 <tr>
                     <td>Neutrum (n.)</td>
-                    <td>das / ein / kein</td>
-                    <td>das / ein / kein</td>
-                    <td>No</td>
+                    <td>das / ein</td>
+                    <td>das / ein</td>
+                    <td className="change-highlight"><strong>dem / einem</strong></td>
                 </tr>
-                 <tr>
+                <tr>
                     <td>Plural</td>
                     <td>die / keine</td>
                     <td>die / keine</td>
-                    <td>No</td>
+                    <td className="change-highlight"><strong>den (+n) / keinen (+n)</strong></td>
                 </tr>
             </tbody>
         </table>
-
+        
         <div className="rule-box summary">
-            <h3>Mini Rules & Tricks</h3>
-            <ol>
-                <li>Ask <strong>Wer/Was?</strong> for <strong>Nominativ</strong> (subject).</li>
-                <li>Ask <strong>Wen/Was?</strong> for <strong>Akkusativ</strong> (direct object).</li>
-                <li><strong>Only MASKULIN SINGULAR changes in Akkusativ.</strong> (der &rarr; den, ein &rarr; einen, kein &rarr; keinen).</li>
-                <li>All other articles (feminine, neutral, plural) stay the same in Akkusativ.</li>
-            </ol>
+            <h3>Case Triggers: Common Verbs</h3>
+            <p>Some verbs almost always take an object in a specific case. Learning them is a great shortcut!</p>
+            <div className="verb-case-columns">
+                 <div>
+                    <strong>Common Akkusativ Verbs:</strong>
+                    <ul>
+                        <li>haben (to have)</li>
+                        <li>sehen (to see)</li>
+                        <li>fragen (to ask)</li>
+                        <li>lieben (to love)</li>
+                        <li>mögen (to like)</li>
+                        <li>kaufen (to buy)</li>
+                    </ul>
+                 </div>
+                 <div>
+                    <strong>Common Dativ Verbs:</strong>
+                     <ul>
+                        <li>helfen (to help)</li>
+                        <li>danken (to thank)</li>
+                        <li>gefallen (to please)</li>
+                        <li>gehören (to belong to)</li>
+                        <li>antworten (to answer)</li>
+                        <li>glauben (to believe)</li>
+                    </ul>
+                 </div>
+            </div>
         </div>
+
+        <h3>Personal Pronouns</h3>
+        <table className="pronoun-table">
+            <thead>
+                <tr>
+                    <th>Nominativ</th>
+                    <th>Akkusativ</th>
+                    <th>Dativ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>ich</td><td className="change-highlight">mich</td><td className="change-highlight">mir</td></tr>
+                <tr><td>du</td><td className="change-highlight">dich</td><td className="change-highlight">dir</td></tr>
+                <tr><td>er</td><td className="change-highlight">ihn</td><td className="change-highlight">ihm</td></tr>
+                <tr><td>sie</td><td>sie</td><td className="change-highlight">ihr</td></tr>
+                <tr><td>es</td><td>es</td><td className="change-highlight">ihm</td></tr>
+                <tr><td>wir</td><td>uns</td><td>uns</td></tr>
+                <tr><td>ihr</td><td>euch</td><td>euch</td></tr>
+                <tr><td>sie/Sie</td><td>sie/Sie</td><td className="change-highlight">ihnen/Ihnen</td></tr>
+            </tbody>
+        </table>
     </div>
 );
 
@@ -357,6 +296,46 @@ const WerWenIntroContent = () => (
     </div>
 );
 
+const WerWenWemIntroContent = () => (
+    <div className="intro-content">
+        <h2 className="intro-header">Wer vs. Wen vs. Wem: Asking "Who?"</h2>
+        <div className="rule-box">
+            <h3>Wer? (Nominativ) - The Subject</h3>
+            <p>Use <strong>Wer</strong> to ask about the person who is <strong>doing the action</strong>. It asks for the subject of the sentence.</p>
+            <ul>
+                <li>The answer to a "Wer?" question is in the Nominativ case.</li>
+                <li><em><strong>Wer</strong> kommt zur Party?</em> &rarr; <em><strong>Meine Freunde</strong> kommen.</em></li>
+            </ul>
+        </div>
+        <div className="rule-box">
+            <h3>Wen? (Akkusativ) - The Direct Object</h3>
+            <p>Use <strong>Wen</strong> to ask about the person who is <strong>receiving the action</strong>. It asks for the direct object.</p>
+            <ul>
+                <li>The answer to a "Wen?" question is in the Akkusativ case.</li>
+                <li><em><strong>Wen</strong> siehst du?</em> &rarr; <em>Ich sehe <strong>den Jungen</strong>.</em></li>
+            </ul>
+        </div>
+        <div className="rule-box">
+            <h3>Wem? (Dativ) - The Indirect Object</h3>
+            <p>Use <strong>Wem</strong> to ask about the person who is <strong>indirectly affected</strong> by the action, often the recipient. It asks for the indirect object.</p>
+            <ul>
+                <li>The answer to a "Wem?" question is in the Dativ case.</li>
+                <li><em><strong>Wem</strong> gehört das Auto?</em> &rarr; <em>Das Auto gehört <strong>dem Mann</strong>.</em></li>
+                <li><em><strong>Wem</strong> hilfst du?</em> &rarr; <em>Ich helfe <strong>meiner Schwester</strong>.</em></li>
+            </ul>
+        </div>
+        <div className="rule-box summary">
+            <h3>The Trick</h3>
+            <ol>
+                <li>Ask about the verb. Is someone <strong>doing</strong> it? &rarr; Use <strong>Wer</strong>.</li>
+                <li>Is someone <strong>receiving</strong> the action directly? &rarr; Use <strong>Wen</strong>.</li>
+                <li>Is someone the <strong>recipient</strong> or beneficiary? Is it a Dativ verb/preposition? &rarr; Use <strong>Wem</strong>.</li>
+            </ol>
+        </div>
+    </div>
+);
+
+
 const InvitationsIntroContent = () => (
     <div className="intro-content">
         <h2 className="intro-header">Einladen (Invitations): The Basics</h2>
@@ -401,6 +380,81 @@ const InvitationsIntroContent = () => (
         </div>
     </div>
 );
+
+const InvitationsResponseIntroContent = () => (
+    <div className="intro-content">
+        <h2 className="intro-header">Responding to Invitations (Auf Einladungen antworten)</h2>
+        <p>Knowing how to accept or decline an invitation politely is an important skill. Here are some key phrases.</p>
+        
+        <div className="rule-box summary">
+            <h3>Accepting an Invitation (Zusagen / Annehmen)</h3>
+            <p>To accept, you can use enthusiastic and positive words.</p>
+            <ul>
+                <li><strong>Ja, gern / gerne!</strong> (Yes, gladly!)</li>
+                <li><strong>Vielen Dank für die Einladung.</strong> (Many thanks for the invitation.)</li>
+                <li><strong>Ich komme sehr gerne.</strong> (I'd love to come.)</li>
+                <li><strong>Das klingt super!</strong> (That sounds great!)</li>
+                <li><strong>Ich bin dabei!</strong> (I'm in! / I'll be there!)</li>
+                <li><strong>Ich freue mich darauf.</strong> (I'm looking forward to it.)</li>
+            </ul>
+            <p className="example-sentence"><em>"Ja, vielen Dank für die Einladung, ich komme gern!"</em></p>
+        </div>
+
+        <div className="rule-box decline">
+            <h3>Declining an Invitation (Absagen / Ablehnen)</h3>
+            <p>When declining, it's polite to thank the person and give a soft reason.</p>
+            <ul>
+                <li><strong>Leider kann ich nicht.</strong> (Unfortunately, I can't.)</li>
+                <li><strong>Schade!</strong> (What a shame! / Too bad!)</li>
+                <li><strong>Es tut mir leid, aber...</strong> (I'm sorry, but...)</li>
+                <li><strong>Ich habe schon etwas vor.</strong> (I already have plans.)</li>
+                <li><strong>Vielleicht klappt es beim nächsten Mal.</strong> (Maybe it will work out next time.)</li>
+            </ul>
+            <p className="example-sentence"><em>"Vielen Dank für die Einladung, aber leider habe ich schon etwas vor. Schade!"</em></p>
+        </div>
+    </div>
+);
+
+const GiftsIntroContent = () => (
+    <div className="intro-content">
+        <h2 className="intro-header">Gift-Giving in Germany (Schenken)</h2>
+        <div className="rule-box">
+            <h3>Useful Phrases</h3>
+            <ul>
+                <li><strong>Für dich/Sie:</strong> For you.</li>
+                <li><strong>Hier ist eine Kleinigkeit für dich.</strong> (Here's a little something for you.)</li>
+                <li><strong>Ich hoffe, es gefällt dir.</strong> (I hope you like it.)</li>
+                <li><strong>Vielen Dank für das tolle Geschenk!</strong> (Many thanks for the great gift!)</li>
+                <li><strong>Das wäre doch nicht nötig gewesen!</strong> (You really shouldn't have!) - A common polite phrase.</li>
+            </ul>
+        </div>
+        <div className="rule-box summary">
+            <h3>Common Gifts (Häufige Geschenke)</h3>
+            <p>Here are some typical gifts you might give or receive in Germany. Pay attention to their genders!</p>
+        </div>
+        <table className="preposition-detail-table">
+            <thead>
+                <tr>
+                    <th>Emoji</th>
+                    <th>German Word (with article)</th>
+                    <th>English Translation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🎁</td><td><strong>das</strong> Geschenk</td><td>The gift</td></tr>
+                <tr><td>💐</td><td><strong>die</strong> Blumen (pl.)</td><td>The flowers</td></tr>
+                <tr><td>📖</td><td><strong>das</strong> Buch</td><td>The book</td></tr>
+                <tr><td>🍾</td><td><strong>die</strong> Flasche Wein</td><td>The bottle of wine</td></tr>
+                <tr><td>🍫</td><td><strong>die</strong> Schokolade</td><td>The chocolate</td></tr>
+                <tr><td>💶</td><td><strong>das</strong> Geld</td><td>The money</td></tr>
+                <tr><td>🎟️</td><td><strong>der</strong> Gutschein</td><td>The voucher / gift card</td></tr>
+                <tr><td>🧸</td><td><strong>das</strong> Spielzeug</td><td>The toy</td></tr>
+                <tr><td>💍</td><td><strong>der</strong> Schmuck</td><td>The jewelry</td></tr>
+            </tbody>
+        </table>
+    </div>
+);
+
 
 const PrepositionsIntroContent = () => (
     <div className="intro-content">
@@ -643,6 +697,102 @@ const AkkusativPrepositionsIntroContent = () => (
                 </tr>
             </tbody>
         </table>
+    </div>
+);
+
+const OneWayPrepositionsIntroContent = () => (
+    <div className="intro-content">
+        <h2 className="intro-header">One-Way Prepositions</h2>
+        <div className="rule-box">
+            <p>Some prepositions are easy: they <strong>always</strong> take the same case. You just need to memorize them and their meanings.</p>
+        </div>
+        <div className="verb-case-columns">
+            <div>
+                <h3><span className="change-highlight">Akkusativ</span> Prepositions (Direction / Movement)</h3>
+                <table className="preposition-detail-table">
+                    <thead><tr><th>Preposition</th><th>Meaning</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>durch</strong></td><td>through</td></tr>
+                        <tr><td><strong>für</strong></td><td>for</td></tr>
+                        <tr><td><strong>gegen</strong></td><td>against</td></tr>
+                        <tr><td><strong>ohne</strong></td><td>without</td></tr>
+                        <tr><td><strong>um</strong></td><td>around / at (time)</td></tr>
+                        <tr><td><strong>bis</strong></td><td>until</td></tr>
+                        <tr><td><strong>entlang</strong></td><td>along</td></tr>
+                    </tbody>
+                </table>
+                 <p className="example-sentence">Example: <em>Ich gehe <strong>durch den</strong> Park.</em></p>
+            </div>
+            <div>
+                <h3><span className="change-highlight">Dativ</span> Prepositions (Location / Static)</h3>
+                 <table className="preposition-detail-table">
+                    <thead><tr><th>Preposition</th><th>Meaning</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>aus</strong></td><td>from / out of</td></tr>
+                        <tr><td><strong>bei</strong></td><td>at / with</td></tr>
+                        <tr><td><strong>mit</strong></td><td>with</td></tr>
+                        <tr><td><strong>nach</strong></td><td>to / after</td></tr>
+                        <tr><td><strong>seit</strong></td><td>since / for</td></tr>
+                        <tr><td><strong>von</strong></td><td>from / by</td></tr>
+                        <tr><td><strong>zu</strong></td><td>to</td></tr>
+                        <tr><td><strong>gegenüber</strong></td><td>opposite</td></tr>
+                    </tbody>
+                </table>
+                 <p className="example-sentence">Example: <em>Ich wohne <strong>bei meinen</strong> Eltern.</em></p>
+            </div>
+        </div>
+         <div className="rule-box summary">
+            <h3>Special Case: als / wie</h3>
+            <p><strong>als</strong> (as) and <strong>wie</strong> (like) are prepositions that take the Nominativ case when they are used for comparisons with the subject.</p>
+            <p className="example-sentence">Example: <em>Er arbeitet <strong>als Lehrer</strong>.</em></p>
+        </div>
+    </div>
+);
+
+const VerbCaseIntroContent = () => (
+    <div className="intro-content">
+        <h2 className="intro-header">Case-Triggering Verbs</h2>
+        <div className="rule-box">
+            <h3>Verbs with a Fixed Case</h3>
+            <p>Some verbs are shortcuts! They almost always take an object in a specific case. Memorizing them makes choosing the right article much easier.</p>
+        </div>
+        <div className="verb-case-columns">
+             <div>
+                <h3>Verbs with <span className="change-highlight">Akkusativ</span></h3>
+                <p>These verbs describe a direct action on something. The noun answering "Wen?" or "Was?" (Whom? or What?) will be in the Akkusativ case.</p>
+                <ul>
+                    <li><strong>haben</strong> (to have)</li>
+                    <li><strong>sehen</strong> (to see)</li>
+                    <li><strong>fragen</strong> (to ask)</li>
+                    <li><strong>brauchen</strong> (to need)</li>
+                    <li><strong>kaufen</strong> (to buy)</li>
+                    <li><strong>suchen</strong> (to look for)</li>
+                    <li><strong>finden</strong> (to find)</li>
+                    <li><strong>anrufen</strong> (to call)</li>
+                    <li><strong>lieben</strong> (to love)</li>
+                    <li><strong>mögen</strong> (to like)</li>
+                </ul>
+             </div>
+             <div>
+                 <h3>Verbs with <span className="change-highlight">Dativ</span></h3>
+                <p>These verbs often involve a recipient or someone being affected indirectly. The noun answering "Wem?" (To whom?) will be in the Dativ case.</p>
+                 <ul>
+                    <li><strong>helfen</strong> (to help)</li>
+                    <li><strong>danken</strong> (to thank)</li>
+                    <li><strong>gefallen</strong> (to please)</li>
+                    <li><strong>gehören</strong> (to belong to)</li>
+                    <li><strong>antworten</strong> (to answer)</li>
+                    <li><strong>glauben</strong> (to believe)</li>
+                    <li><strong>folgen</strong> (to follow)</li>
+                    <li><strong>passen</strong> (to fit)</li>
+                    <li><strong>schmecken</strong> (to taste good to)</li>
+                    <li><strong>zuhören</strong> (to listen to)</li>
+                </ul>
+             </div>
+        </div>
+         <div className="rule-box summary">
+            <p><strong>Remember:</strong> If you see a verb from the Dativ list, its object will almost always be Dativ, even if it feels like a direct object in English (e.g., "I help <strong>him</strong>" &rarr; "Ich helfe <strong>ihm</strong>").</p>
+        </div>
     </div>
 );
 
@@ -1276,25 +1426,40 @@ const App = () => {
                 const quizData = currentChapter.quizzes[currentQuizId];
                 
                 let intro = null;
+                const pronounQuizIds = ['ex24', 'ex25', 'ex26', 'ex27'];
+                const oneWayPrepositionQuizIds = ['ex28', 'ex29', 'ex30'];
+                const verbCaseQuizIds = ['ex31', 'ex32'];
+                const invitationResponseQuizIds = ['invEx4', 'invEx5'];
+
+
                 if (currentQuizId === 'ex0') {
                     intro = <IntroContent />;
+                } else if (currentChapterId === 'nomAkk' && (currentQuizId === 'ex2' || currentQuizId === 'ex3')) {
+                    intro = <WerWenWemIntroContent />;
                 } else if (currentQuizId === 'modalEx0') {
                     intro = <ModalIntroContent />;
                 } else if (currentQuizId === 'numEx0') {
                     intro = <NumbersIntroContent />;
-                } else if (currentQuizId === 'proEx0') {
+                } else if (currentChapterId === 'nomAkk' && pronounQuizIds.includes(currentQuizId)) {
                     intro = <PronounsIntroContent />;
-                } else if (currentQuizId === 'proEx3') {
-                    intro = <WerWenIntroContent />;
                 } else if (currentQuizId === 'invEx0' || currentQuizId === 'invEx3') {
                     intro = <InvitationsIntroContent />;
+                } else if (invitationResponseQuizIds.includes(currentQuizId)) {
+                    intro = <InvitationsResponseIntroContent />;
+                } else if (currentQuizId === 'invEx6') {
+                    intro = <GiftsIntroContent />;
                 } else if (currentQuizId === 'prepEx0') {
                     intro = <PrepositionsIntroContent />;
                 } else if (currentQuizId === 'prepEx2') {
                     intro = <AkkusativPrepositionsIntroContent />;
+                } else if (currentChapterId === 'nomAkk' && oneWayPrepositionQuizIds.includes(currentQuizId)) {
+                    intro = <OneWayPrepositionsIntroContent />;
+                } else if (currentChapterId === 'nomAkk' && verbCaseQuizIds.includes(currentQuizId)) {
+                    intro = <VerbCaseIntroContent />;
                 }
 
-                if (currentQuizId === 'invEx3') {
+                const invitationQuizIds = ['invEx3', 'invEx4', 'invEx5'];
+                if (invitationQuizIds.includes(currentQuizId)) {
                     return <InvitationQuiz quiz={quizData} onBack={() => setPage('topic')} introContent={intro} />;
                 }
                 if (quizData.type === 'interactive_ordinal') {
